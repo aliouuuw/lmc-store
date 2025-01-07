@@ -135,7 +135,6 @@ export interface Product {
   };
   price: number;
   images: {
-    [x: string]: string | StaticImport;
     image: number | Media;
     id?: string | null;
   }[];
