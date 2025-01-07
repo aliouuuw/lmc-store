@@ -1,14 +1,14 @@
 import React from 'react';
 import { formatDate } from '../../../utils/formatDate';
 import { payload } from '@/lib/payloadClient';
-import { Offer } from '@/payload-types';
+import { Promotion } from '@/payload-types';
 
 async function getActivePromotions() {
   
   const currentDate = new Date().toISOString();
   
-  const offers = await payload.find({
-    collection: 'offers',
+  const promotions = await payload.find({
+    collection: 'promotions',
     where: {
       and: [
         {
@@ -30,7 +30,7 @@ async function getActivePromotions() {
     },
   });
 
-  return offers.docs;
+  return promotions.docs;
 }
 
 export default async function PromotionsPage() {
@@ -44,7 +44,7 @@ export default async function PromotionsPage() {
         <p className="text-gray-500">Aucune promotion mise par l&apos;administrateur en cours.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl w-full">
-          {promotions.map((promo: Offer) => (
+          {promotions.map((promo: Promotion) => (
             <div 
               key={promo.id} 
               className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow"

@@ -15,7 +15,7 @@ export interface Config {
     media: Media;
     categories: Category;
     products: Product;
-    offers: Offer;
+    promotions: Promotion;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -26,7 +26,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
-    offers: OffersSelect<false> | OffersSelect<true>;
+    promotions: PromotionsSelect<false> | PromotionsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -36,7 +36,7 @@ export interface Config {
   };
   globals: {};
   globalsSelect: {};
-  locale: null;
+  locale: 'en' | 'fr';
   user: User & {
     collection: 'users';
   };
@@ -87,6 +87,7 @@ export interface User {
 export interface Media {
   id: number;
   alt: string;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -140,10 +141,10 @@ export interface Product {
   }[];
   category: number | Category;
   status: 'draft' | 'available' | 'sold-out';
-  offer?: (number | null) | Offer;
+  promotion?: (number | null) | Promotion;
   featured?: boolean | null;
   /**
-   * Quantité disponible en stock
+   * Quantity available in stock
    */
   quantity: number;
   updatedAt: string;
@@ -151,9 +152,9 @@ export interface Product {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "offers".
+ * via the `definition` "promotions".
  */
-export interface Offer {
+export interface Promotion {
   id: number;
   name: string;
   description: string;
@@ -189,8 +190,8 @@ export interface PayloadLockedDocument {
         value: number | Product;
       } | null)
     | ({
-        relationTo: 'offers';
-        value: number | Offer;
+        relationTo: 'promotions';
+        value: number | Promotion;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -255,6 +256,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -294,7 +296,7 @@ export interface ProductsSelect<T extends boolean = true> {
       };
   category?: T;
   status?: T;
-  offer?: T;
+  promotion?: T;
   featured?: T;
   quantity?: T;
   updatedAt?: T;
@@ -302,9 +304,9 @@ export interface ProductsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "offers_select".
+ * via the `definition` "promotions_select".
  */
-export interface OffersSelect<T extends boolean = true> {
+export interface PromotionsSelect<T extends boolean = true> {
   name?: T;
   description?: T;
   discountPercentage?: T;

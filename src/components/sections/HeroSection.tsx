@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-
+import { useRouter } from "next/navigation";
 const CAROUSEL_IMAGES = [
   "/images/hero-bg-0.jpg",
   "/images/hero-bg-1.webp",
@@ -15,7 +15,7 @@ const SLIDE_DURATION = 5000; // 5 seconds per slide
 
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const router = useRouter();
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
@@ -53,9 +53,9 @@ export default function HeroSection() {
           size="lg"
           variant="default"
           className="bg-amber-800 hover:bg-amber-900"
-          onClick={() => (window.location.href = "/produits-frais")}
+          onClick={() => router.push("/promos")}
         >
-          Découvrir les Offres
+          Découvrir les Promotions
         </Button>
 
         {/* Search Bar */}

@@ -24,10 +24,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product) => (
-          <div
-            key={product.id}
-            className="cursor-pointer"
-          >
+          <div key={product.id} className="cursor-pointer">
             <div className="border rounded-lg overflow-hidden shadow-md">
               {product.images && product.images[0] && (
                 <div className="relative h-48 w-full">
@@ -48,9 +45,9 @@ export default function ProductGrid({ products }: ProductGridProps) {
                 <p className="text-gray-600 mt-2">
                   {product.price.toFixed(2)} F
                 </p>
-                {product.offer && (
+                {product.promotion && (
                   <span className="bg-red-500 text-white px-2 py-1 rounded-full text-sm mt-2 inline-block">
-                    Offre Spéciale
+                    Promotion
                   </span>
                 )}
                 <div className=" flex justify-between mt-4">
@@ -63,7 +60,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
                       addItem({
                         id: product.id.toString(),
                         name: product.title,
-                        price: product.price
+                        price: product.price,
                       });
                     }}
                   >
@@ -104,11 +101,11 @@ export default function ProductGrid({ products }: ProductGridProps) {
                 {selectedProduct?.price} F
               </p>
               <RichText content={selectedProduct?.description} />
-              {selectedProduct?.offer && (
+              {selectedProduct?.promotion && (
                 <div className="bg-red-100 text-red-800 p-2 rounded">
                   Promotion:{" "}
-                  {typeof selectedProduct.offer === "object"
-                    ? selectedProduct.offer.name
+                  {typeof selectedProduct.promotion === "object"
+                    ? selectedProduct.promotion.name
                     : "Unknown"}
                 </div>
               )}
@@ -116,6 +113,20 @@ export default function ProductGrid({ products }: ProductGridProps) {
                 En stock: {selectedProduct?.quantity || 0} unités
               </p>
               {/* Add more product details as needed */}
+              <Button
+                variant="outline"
+                onClick={() => {
+                  if (selectedProduct) {
+                    addItem({
+                      id: selectedProduct.id.toString(),
+                      name: selectedProduct.title,
+                      price: selectedProduct.price,
+                    });
+                  }
+                }}
+              >
+                Ajouter au panier
+              </Button>
             </div>
           </div>
         </DialogContent>
