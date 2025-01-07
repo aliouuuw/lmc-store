@@ -9,7 +9,7 @@ import { Poiret_One} from "next/font/google"
 import Image from "next/image"
 import TopBanner from "./TopBanner"
 import { CartSheet } from "../CartSheet"
-
+import { useRouter } from "next/navigation";
 const navigation = [
   { name: "Accueil", href: "/" },
   { name: "Produits Frais", href: "/produits-frais" },
@@ -26,7 +26,7 @@ const logoFont = Poiret_One({
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-
+  const router = useRouter();
   return (
     <nav className="fixed w-full h-24 top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b">
       <TopBanner />
@@ -54,7 +54,7 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" onClick={() => (window.location.href = "/admin")}>
+            <Button variant="ghost" size="icon" onClick={() => (router.push("/admin"))}>
               <User className="h-5 w-5" />
             </Button>
             <CartSheet />
