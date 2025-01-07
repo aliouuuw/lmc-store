@@ -23,7 +23,6 @@ export default function Home() {
           <Newsletter />
         </div>
       </main>
-      <Footer />
     </div>
   )
 }
