@@ -14,7 +14,7 @@ const navigation = [
   { name: "Accueil", href: "/" },
   { name: "Produits Frais", href: "/produits-frais" },
   { name: "Divers", href: "/divers" },
-  { name: "Offres", href: "/offres" },
+  { name: "Promotions", href: "/promos" },
   { name: "À Propos", href: "/a-propos" },
   { name: "Contact", href: "/contact" },
 ]
@@ -28,7 +28,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter();
   return (
-    <nav className="fixed w-full h-24 top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b">
+    <nav className="fixed w-full h-32 md:24 top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b">
       <TopBanner />
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">

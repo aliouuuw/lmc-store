@@ -18,7 +18,7 @@ function Footer() {
             <ul className="space-y-1">
               <li><Link href="/about" className="text-neutral-600 hover:text-amber-500 transition-colors">À propos</Link></li>
               <li><Link href="/terms" className="text-neutral-600 hover:text-amber-500 transition-colors">Conditions générales</Link></li>
-              <li><Link href="/privacy" className="text-neutral-600 hover:text-amber-500 transition-colors">Politique de confidentialité</Link></li>
+              <li><Link href="/privacy" className="text-neutral-600 hover:text-amber-500 transition-colors">Mentions légales</Link></li>
             </ul>
           </div>
           <div>

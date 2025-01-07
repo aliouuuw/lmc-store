@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <main className="min-h-screen pt-24">
+      <main className="min-h-screen pt-32 md:pt-24">
         <HeroSection />
         <div className="container mx-auto px-4">
           <CategoryHighlights />

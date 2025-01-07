@@ -34,7 +34,7 @@ export default async function ProduitsFraisPage() {
   const products = await getProducts()
 
   return (
-    <div className="container mx-auto px-4 pt-36 pb-12">
+    <div className="container mx-auto px-4 pt-32 md:pt-24 pb-12">
       <h1 className="text-3xl font-bold mb-8">Produits Frais</h1>
       <ProductGrid products={products} />
     </div>
