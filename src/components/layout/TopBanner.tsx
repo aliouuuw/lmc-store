@@ -13,7 +13,7 @@ export default function TopBanner() {
     <div className="bg-primary text-primary-foreground py-2 px-4">
       <div className="container mx-auto flex items-center justify-between text-sm">
         <div className="flex items-center space-x-4">
-          <span>📞 Commandez par téléphone: 07 12 34 56 78</span>
+          <span>📞 Commandez par téléphone: +221 78 140 50 25</span>
           <span className="hidden md:inline">|</span>
           <span className="hidden md:inline">
             🚚 Livraison gratuite dès 10 000 F
