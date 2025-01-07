@@ -8,7 +8,7 @@ export default function FeaturedProducts() {
     {
       id: 1,
       title: "Poulet Fermier",
-      price: 12.99,
+      price: 5000,
       image: "/images/blanc-de-poulet.jpeg",
       tag: "Meilleure Vente"
     },
